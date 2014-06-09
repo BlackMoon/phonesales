@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"		
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+	
+	<ace:confirmationDialog  widgetVar="confirmation"
+                             message="Удалить производителя (с телефонами)?"
+                             header="Внимание"
+                             width="360"
+                             height="180"
+                             closable="true"
+                             position="center">
+         <h:panelGrid columns="2" styleClass="centeredPanelGrid">
+             <h:commandButton value="Да" onclick="confirmation.hide()" actionListener="#{manufactorBean.delete}"/>
+             <h:commandButton value="Нет" onclick="confirmation.hide()" />
+         </h:panelGrid>
+     </ace:confirmationDialog>
+	
+	<h:panelGrid columns="2" rendered="#{request.userPrincipal != null}">
+		<ace:pushButton value="Добавить" actionListener="#{manufactorBean.add}"/>		
+		<ace:pushButton value="Удалить" styleClass="ice-pushbutton ui-state-disabled" rendered="#{!manufactorBean.isSelected}"/>
+		<ace:pushButton value="Удалить" styleClass="ice-pushbutton" rendered="#{manufactorBean.isSelected}" onclick="confirmation.show()"/>		
+	</h:panelGrid>
+	
+	<ace:dataTable id="gridmanufactors" value="#{manufactorBean.items}" 
+					var="manufactor"					 
+					paginator="true" 
+					paginatorPosition="bottom"
+					reorderableColumns="true"
+					rows="20"
+					stateMap="#{manufactorBean.stateMap}"	
+					selectionMode="single"
+					rowSelectListener="#{manufactorBean.select}"
+					rowUnSelectListener="#{manufactorBean.unselect}">
+ 			 <ace:column id="id" headerText="ID" sortBy="#{manufactor.id}" filterBy="#{manufactor.id}" filterMatchMode="exact">
+              	<h:outputText id="idCell" value="#{manufactor.id}"/>
+              </ace:column>                 
+              <ace:column id="name" headerText="Наименование" sortBy="#{manufactor.name}" filterBy="#{manufactor.name}">
+              	<ace:cellEditor>
+                  	<f:facet name="output">
+                      	<h:outputText id="nameCell" value="#{manufactor.name}"/>
+                   	</f:facet>
+                   	<f:facet name="input">
+                       	<h:inputText id="nameInput" value="#{manufactor.name}" required="true"/>
+                   	</f:facet>
+                </ace:cellEditor>              	
+              </ace:column>   
+              <ace:column id="country" headerText="Страна" sortBy="#{manufactor.country}" filterBy="#{manufactor.country}">
+              	<ace:cellEditor>
+                  	<f:facet name="output">
+                      	<h:outputText id="countryCell" value="#{manufactor.country}"/>
+                   	</f:facet>
+                   	<f:facet name="input">
+                       	<h:inputText id="countryInput" value="#{manufactor.country}" required="true"/>
+                   	</f:facet>
+                </ace:cellEditor>              	
+              </ace:column>   
+              <ace:column id="misc" rendered="#{request.userPrincipal != null}">
+              	<ace:rowEditor id="editor" 
+              		rowEditListener="#{manufactorBean.edit}"               		
+              		cancelTitle="Отмена" 
+              		startTitle="Редактировать" 
+              		submitTitle="Сохранить"/>                   		
+              </ace:column>                             
+       	</ace:dataTable>
+
+</ui:composition>

@@ -1,0 +1,9 @@
+org\bm\model_AnryukhinNU\Person_AndryukhinNU.class
+org\bm\model_AnryukhinNU\Key_AndryukhinNU.class
+org\bm\model_AnryukhinNU\Sale_AndryukhinNU.class
+org\bm\ejb_AndryukhinNU\DBEjbBean_AndryukhinNU.class
+org\bm\model_AnryukhinNU\Manufactor_AndryukhinNU.class
+org\bm\model_AnryukhinNU\Office_AndryukhinNU.class
+org\bm\ejb_AndryukhinNU\PersonEjbBean_AndryukhinNU.class
+org\bm\service_AndryukhinNU\PersonServiceBean_AndryukhinNU.class
+org\bm\model_AnryukhinNU\Phone_AndryukhinNU.class

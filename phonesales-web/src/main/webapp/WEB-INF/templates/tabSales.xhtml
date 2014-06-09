@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"	
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+	
+	<ace:confirmationDialog  widgetVar="confirmation"
+                             message="Удалить запись?"
+                             header="Внимание"
+                             width="360"
+                             height="180"
+                             closable="true"
+                             position="center">
+         <h:panelGrid columns="2" styleClass="centeredPanelGrid">
+             <h:commandButton value="Да" onclick="confirmation.hide()" actionListener="#{saleBean.delete}"/>
+             <h:commandButton value="Нет" onclick="confirmation.hide()" />
+         </h:panelGrid>
+     </ace:confirmationDialog>
+	
+	<h:panelGrid columns="2" rendered="#{request.userPrincipal != null}">
+		<ace:pushButton value="Добавить" actionListener="#{saleBean.add}"/>		
+		<ace:pushButton value="Удалить" styleClass="ice-pushbutton ui-state-disabled" rendered="#{!saleBean.isSelected}"/>
+		<ace:pushButton value="Удалить" styleClass="ice-pushbutton" rendered="#{saleBean.isSelected}" onclick="confirmation.show()"/>		
+	</h:panelGrid>
+	
+	<ace:dataTable id="gridSales" value="#{saleBean.items}" 
+					var="sale"					 
+					paginator="true" 
+					paginatorPosition="bottom"
+					reorderableColumns="true"
+					rows="20"
+					stateMap="#{saleBean.stateMap}"
+					selectionMode="single"
+					rowSelectListener="#{saleBean.select}"
+					rowUnSelectListener="#{saleBean.unselect}"> 			                  
+              <ace:column id="phone" headerText="Телефон" sortBy="#{sale.book}" filterBy="#{sale.book}">
+              	<ace:cellEditor>
+                  	<f:facet name="output">
+                      	<h:outputText id="phoneCell" value="#{sale.phone.name}" />
+                   	</f:facet>
+                   	<f:facet name="input">                   		
+                       	<h:selectOneMenu id="phoneInput" value="#{sale.phoneid}">
+                       		<f:selectItems value="#{phonetBean.items}" var="phone" itemLabel="#{phone.name}" itemValue="#{phone.id}" />                       		
+                       	</h:selectOneMenu>                       	                       	
+                   	</f:facet>
+                </ace:cellEditor>            	
+              </ace:column>   
+              <ace:column id="office" headerText="Офис" sortBy="#{sale.reader}" filterBy="#{sale.reader}" >
+              	<ace:cellEditor>
+                  	<f:facet name="output">
+                      	<h:outputText id="officeCell" value="#{sale.office.name}" />
+                   	</f:facet>
+                   	<f:facet name="input">                   		
+                       	<h:selectOneMenu id="officeInput" value="#{sale.officeid}">
+                       		<f:selectItems value="#{officeBean.items}" var="office" itemLabel="#{office.name}" itemValue="#{office.id}" />                       		
+                       	</h:selectOneMenu>                       	                       	
+                   	</f:facet>
+                </ace:cellEditor>           	
+              </ace:column>
+              <ace:column id="saleDate" headerText="Дата продажи" sortBy="#{sale.startDate}" filterBy="#{sale.startDate}" >
+              	<ace:cellEditor>
+                  	<f:facet name="output">
+                      	<h:outputText id="startDateCell" value="#{sale.startDate}">
+                      		<f:convertDateTime pattern="dd.MM.yyyy"/>
+                      	</h:outputText>
+                   	</f:facet>
+                   	<f:facet name="input">
+                   		<ace:dateTimeEntry id="startDateInput" renderAsPopup="true" pattern="dd.MM.yyyy" value="#{sale.startDate}" timeZone="Russia"/>                   		                       	
+                   	</f:facet>            	
+                </ace:cellEditor>
+              </ace:column>              
+              <ace:column id="misc" rendered="#{request.userPrincipal != null}">
+              	<ace:rowEditor id="editor" 
+              		rowEditListener="#{saleBean.edit}"               		
+              		cancelTitle="Отмена" 
+              		startTitle="Редактировать" 
+              		submitTitle="Сохранить"/>                   		
+              </ace:column>                             
+       	</ace:dataTable>
+</ui:composition>
