@@ -44,6 +44,12 @@ public class OfficeServiceBean_AndryukhinNU {
 	}
 	
 	public void updateOffice(Office_AndryukhinNU o) {
-		dao.update(o);		
+		try
+		{
+			dao.update(o);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
 	}	
 }

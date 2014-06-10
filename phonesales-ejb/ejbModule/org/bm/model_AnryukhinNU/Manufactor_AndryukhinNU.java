@@ -71,6 +71,15 @@ public class Manufactor_AndryukhinNU implements Key_AndryukhinNU {
 		this.phones = phones;
 	}
 	
+	public void addPhone(Phone_AndryukhinNU p) {
+		if (!phones.contains(p)) {
+			phones.add(p);
+		}
+	}
 	
+	public void removePhone(Phone_AndryukhinNU p) {
+		phones.remove(p);
+	}
+
 
 }

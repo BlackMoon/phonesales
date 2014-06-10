@@ -34,7 +34,7 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 	private int manufactorid;
 	private int year;
 	
-	private String name;
+	private String model;
 	
 	private Manufactor_AndryukhinNU manufactor;
 	private Sale_AndryukhinNU sale;
@@ -57,12 +57,12 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 		this.year = year;
 	}
 
-	public String getName() {
-		return name;
+	public String getModel() {
+		return model;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setModel(String model) {
+		this.model = model;
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)

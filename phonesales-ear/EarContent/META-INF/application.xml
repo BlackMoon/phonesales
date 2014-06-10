@@ -7,7 +7,7 @@
   <module>
     <web>
       <web-uri>phonesales-web.war</web-uri>
-      <context-root>phonesales</context-root>
+      <context-root>phonesales-web</context-root>
     </web>
   </module>
   <library-directory>lib</library-directory>

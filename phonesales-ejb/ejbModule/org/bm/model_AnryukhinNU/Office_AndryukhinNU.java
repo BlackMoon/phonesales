@@ -70,4 +70,15 @@ public class Office_AndryukhinNU implements Key_AndryukhinNU {
 	public void setSales(List<Sale_AndryukhinNU> sales) {
 		this.sales = sales;
 	}
+	
+	public void addSale(Sale_AndryukhinNU s) {
+		if (!sales.contains(s)) {
+			sales.add(s);
+		}
+	}
+	
+	public void removeSale(Sale_AndryukhinNU s) {
+		sales.remove(s);
+	}
+
 }

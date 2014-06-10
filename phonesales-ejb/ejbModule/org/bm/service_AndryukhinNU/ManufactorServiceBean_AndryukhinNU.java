@@ -43,7 +43,7 @@ public class ManufactorServiceBean_AndryukhinNU {
 		dao.delete(id);		
 	}
 	
-	public void updateManufactor(Manufactor_AndryukhinNU o) {
-		dao.update(o);		
+	public void updateManufactor(Manufactor_AndryukhinNU m) {
+		dao.update(m);		
 	}	
 }
