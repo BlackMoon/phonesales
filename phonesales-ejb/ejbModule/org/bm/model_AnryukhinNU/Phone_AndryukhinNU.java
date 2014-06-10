@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
@@ -30,6 +31,7 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
+	private int manufactorid;
 	private int year;
 	
 	private String name;
@@ -81,6 +83,15 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 
 	public void setSale(Sale_AndryukhinNU sale) {
 		this.sale = sale;
+	}
+	
+	@Transient
+	public int getManufactorid() {
+		return manufactorid;
+	}
+
+	public void setManufactorid(int manufactorid) {
+		this.manufactorid = manufactorid;
 	}
 	
 	

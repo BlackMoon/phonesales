@@ -33,7 +33,9 @@ public class Sale_AndryukhinNU implements Key_AndryukhinNU {
 	private int id;
 	private int officeid;
 	private int phoneid;
-
+	
+	private float price;
+	
 	private Date saleDate;
 	
 	private Phone_AndryukhinNU phone;
@@ -93,6 +95,14 @@ public class Sale_AndryukhinNU implements Key_AndryukhinNU {
 
 	public void setOffice(Office_AndryukhinNU office) {
 		this.office = office;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	
 	
