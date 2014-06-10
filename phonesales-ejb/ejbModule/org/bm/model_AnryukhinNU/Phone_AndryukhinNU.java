@@ -73,6 +73,10 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 
 	public void setManufactor(Manufactor_AndryukhinNU manufactor) {
 		this.manufactor = manufactor;
+		
+		if (manufactor != null)
+			manufactorid = manufactor.getId();
+
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="phone", cascade = CascadeType.ALL, orphanRemoval=true)

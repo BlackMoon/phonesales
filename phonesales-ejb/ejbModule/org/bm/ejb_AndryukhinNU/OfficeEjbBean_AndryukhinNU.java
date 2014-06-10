@@ -31,7 +31,7 @@ public class OfficeEjbBean_AndryukhinNU extends DBEjbBean_AndryukhinNU<Office_An
 	public int getNewId(){
 		int newid = 1;
 		
-		Object o = em.createQuery("SELECT MAX(o.id) + 1 FROM Officer o").getSingleResult();		
+		Object o = em.createQuery("SELECT MAX(o.id) + 1 FROM Office o").getSingleResult();		
 		return (o != null) ? (int)o : newid;		
 	}	
 	

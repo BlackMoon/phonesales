@@ -85,6 +85,9 @@ public class Sale_AndryukhinNU implements Key_AndryukhinNU {
 	
 	public void setPhone(Phone_AndryukhinNU phone) {
 		this.phone = phone;
+		
+		if (phone!= null)
+			phoneid = phone.getId();
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -95,6 +98,9 @@ public class Sale_AndryukhinNU implements Key_AndryukhinNU {
 
 	public void setOffice(Office_AndryukhinNU office) {
 		this.office = office;
+		
+		if (office!= null)
+			officeid = office.getId();
 	}
 
 	public float getPrice() {
