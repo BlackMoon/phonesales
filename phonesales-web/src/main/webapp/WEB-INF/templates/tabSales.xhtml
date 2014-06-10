@@ -46,7 +46,7 @@
                    	</f:facet>
                 </ace:cellEditor>            	
               </ace:column>   
-              <ace:column id="office" headerText="Офис" sortBy="#{sale.reader}" filterBy="#{sale.reader}" >
+              <ace:column id="office" headerText="Офис" sortBy="#{sale.office.name}" filterBy="#{sale.office.name}" >
               	<ace:cellEditor>
                   	<f:facet name="output">
                       	<h:outputText id="officeCell" value="#{sale.office.name}" />

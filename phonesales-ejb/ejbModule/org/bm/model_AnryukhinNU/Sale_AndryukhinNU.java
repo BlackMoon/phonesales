@@ -77,7 +77,7 @@ public class Sale_AndryukhinNU implements Key_AndryukhinNU {
 		this.saleDate = saleDate;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="phoneid")
 	public Phone_AndryukhinNU getPhone() {
 		return phone;

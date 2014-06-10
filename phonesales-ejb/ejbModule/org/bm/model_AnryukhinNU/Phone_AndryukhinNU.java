@@ -3,6 +3,8 @@
  */
 package org.bm.model_AnryukhinNU;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -37,7 +40,7 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 	private String model;
 	
 	private Manufactor_AndryukhinNU manufactor;
-	private Sale_AndryukhinNU sale;
+	private List<Sale_AndryukhinNU> sales;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -79,16 +82,6 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy="phone", cascade = CascadeType.ALL, orphanRemoval=true)
-	@XmlTransient
-	public Sale_AndryukhinNU getSale() {
-		return sale;
-	}
-
-	public void setSale(Sale_AndryukhinNU sale) {
-		this.sale = sale;
-	}
-	
 	@Transient
 	public int getManufactorid() {
 		return manufactorid;
@@ -96,6 +89,16 @@ public class Phone_AndryukhinNU implements Key_AndryukhinNU {
 
 	public void setManufactorid(int manufactorid) {
 		this.manufactorid = manufactorid;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="phone", cascade = CascadeType.ALL, orphanRemoval=true)
+	@XmlTransient
+	public List<Sale_AndryukhinNU> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale_AndryukhinNU> sales) {
+		this.sales = sales;
 	}
 	
 	
