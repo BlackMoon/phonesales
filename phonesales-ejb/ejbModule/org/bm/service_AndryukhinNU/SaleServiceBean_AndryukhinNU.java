@@ -17,7 +17,7 @@ import org.bm.model_AnryukhinNU.Sale_AndryukhinNU;
  *
  */
 @Stateless
-@WebService(portName="Phone", targetNamespace="http://phone.org")
+@WebService(portName="Sale", targetNamespace="http://sale.org")
 public class SaleServiceBean_AndryukhinNU {
 	
 	@EJB

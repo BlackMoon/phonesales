@@ -9,14 +9,12 @@ import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.bm.service.office.OfficeAndryukhinNU;
-import org.bm.service.office.OfficeServiceBean_AndryukhinNU;
-import org.bm.service.office.OfficeServiceBean_AndryukhinNUServiceLocator;
 import org.bm.service.phone.PhoneAndryukhinNU;
 import org.bm.service.phone.PhoneServiceBean_AndryukhinNU;
 import org.bm.service.phone.PhoneServiceBean_AndryukhinNUServiceLocator;
@@ -38,6 +36,17 @@ public class PhoneBean_AndryukhinNU extends GridBean_AndryukhinNU<PhoneAndryukhi
 	private static final String ADDRESS = "http://localhost:8080/PhoneServiceBean_AndryukhinNUService/PhoneServiceBean_AndryukhinNU?wsdl";
 	
 	PhoneServiceBean_AndryukhinNU pb;
+	
+	@ManagedProperty(value="#{manufactorBean}")
+	private ManufactorBean_AndryukhinNU manufactorBean;	 
+	
+	public ManufactorBean_AndryukhinNU getManufactorBean() {
+		return manufactorBean;
+	}
+
+	public void setManufactorBean(ManufactorBean_AndryukhinNU manufactorBean) {
+		this.manufactorBean = manufactorBean;
+	}
 	
 	@PostConstruct
     public void init() {
@@ -109,7 +118,10 @@ public class PhoneBean_AndryukhinNU extends GridBean_AndryukhinNU<PhoneAndryukhi
 		PhoneAndryukhinNU p = (PhoneAndryukhinNU)e.getObject();
 		
 		try 
-		{	
+		{
+			p.setManufactor(manufactorBean.get(p.getManufactorid()));
+
+			
 			if (isNew)
 			{ 
 				pb.addPhone(p);			
@@ -122,4 +134,10 @@ public class PhoneBean_AndryukhinNU extends GridBean_AndryukhinNU<PhoneAndryukhi
 			ex.printStackTrace();
 		}
 	}
+	
+	public PhoneAndryukhinNU get(int id) throws RemoteException{
+		
+		return pb.getPhone(id);
+	}
+
 }

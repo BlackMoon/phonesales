@@ -44,4 +44,9 @@ encoding//phonesales-web/src/main/java/org/bm/service/phone/PhoneBindingStub.jav
 encoding//phonesales-web/src/main/java/org/bm/service/phone/PhoneServiceBean_AndryukhinNU.java=UTF-8
 encoding//phonesales-web/src/main/java/org/bm/service/phone/PhoneServiceBean_AndryukhinNUService.java=UTF-8
 encoding//phonesales-web/src/main/java/org/bm/service/phone/PhoneServiceBean_AndryukhinNUServiceLocator.java=UTF-8
+encoding//phonesales-web/src/main/java/org/bm/service/sale/SaleAndryukhinNU.java=UTF-8
+encoding//phonesales-web/src/main/java/org/bm/service/sale/SaleBindingStub.java=UTF-8
+encoding//phonesales-web/src/main/java/org/bm/service/sale/SaleServiceBean_AndryukhinNU.java=UTF-8
+encoding//phonesales-web/src/main/java/org/bm/service/sale/SaleServiceBean_AndryukhinNUService.java=UTF-8
+encoding//phonesales-web/src/main/java/org/bm/service/sale/SaleServiceBean_AndryukhinNUServiceLocator.java=UTF-8
 encoding/<project>=UTF-8

@@ -119,5 +119,11 @@ public class ManufactorBean_AndryukhinNU extends GridBean_AndryukhinNU<Manufacto
 			ex.printStackTrace();
 		}
 	}
+	
+	public ManufactorAndryukhinNU get(int id) throws RemoteException{
+		
+		return mb.getManufactor(id);
+	}
+
 
 }

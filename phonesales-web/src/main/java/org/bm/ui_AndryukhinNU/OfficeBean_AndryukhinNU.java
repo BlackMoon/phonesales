@@ -17,6 +17,7 @@ import javax.faces.event.ActionEvent;
 import org.bm.service.office.OfficeAndryukhinNU;
 import org.bm.service.office.OfficeServiceBean_AndryukhinNU;
 import org.bm.service.office.OfficeServiceBean_AndryukhinNUServiceLocator;
+import org.bm.service.phone.PhoneAndryukhinNU;
 import org.icefaces.ace.component.celleditor.CellEditor;
 import org.icefaces.ace.component.datatable.DataTable;
 import org.icefaces.ace.event.RowEditEvent;
@@ -118,6 +119,11 @@ public class OfficeBean_AndryukhinNU extends GridBean_AndryukhinNU<OfficeAndryuk
 		catch (Exception ex) { 
 			ex.printStackTrace();
 		}
+	}
+	
+	public OfficeAndryukhinNU get(int id) throws RemoteException{
+		
+		return ob.getOffice(id);
 	}
 
 }

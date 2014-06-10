@@ -34,14 +34,14 @@
 					selectionMode="single"
 					rowSelectListener="#{saleBean.select}"
 					rowUnSelectListener="#{saleBean.unselect}"> 			                  
-              <ace:column id="phone" headerText="Телефон" sortBy="#{sale.book}" filterBy="#{sale.book}">
+              <ace:column id="phone" headerText="Телефон" sortBy="#{sale.phone.model}" filterBy="#{sale.phone.model}">
               	<ace:cellEditor>
                   	<f:facet name="output">
-                      	<h:outputText id="phoneCell" value="#{sale.phone.name}" />
+                      	<h:outputText id="phoneCell" value="#{sale.phone.model}" />
                    	</f:facet>
                    	<f:facet name="input">                   		
                        	<h:selectOneMenu id="phoneInput" value="#{sale.phoneid}">
-                       		<f:selectItems value="#{phonetBean.items}" var="phone" itemLabel="#{phone.name}" itemValue="#{phone.id}" />                       		
+                       		<f:selectItems value="#{phoneBean.items}" var="phone" itemLabel="#{phone.model}" itemValue="#{phone.id}" />                       		
                        	</h:selectOneMenu>                       	                       	
                    	</f:facet>
                 </ace:cellEditor>            	
@@ -58,15 +58,15 @@
                    	</f:facet>
                 </ace:cellEditor>           	
               </ace:column>
-              <ace:column id="saleDate" headerText="Дата продажи" sortBy="#{sale.startDate}" filterBy="#{sale.startDate}" >
+              <ace:column id="saleDate" headerText="Дата продажи" sortBy="#{sale.saleDate}" filterBy="#{sale.saleDate}" >
               	<ace:cellEditor>
                   	<f:facet name="output">
-                      	<h:outputText id="startDateCell" value="#{sale.startDate}">
+                      	<h:outputText id="saleDateCell" value="#{sale.saleDate}">
                       		<f:convertDateTime pattern="dd.MM.yyyy"/>
                       	</h:outputText>
                    	</f:facet>
                    	<f:facet name="input">
-                   		<ace:dateTimeEntry id="startDateInput" renderAsPopup="true" pattern="dd.MM.yyyy" value="#{sale.startDate}" timeZone="Russia"/>                   		                       	
+                   		<ace:dateTimeEntry id="saleDateInput" renderAsPopup="true" pattern="dd.MM.yyyy" value="#{sale.saleDate}" timeZone="Russia"/>                   		                       	
                    	</f:facet>            	
                 </ace:cellEditor>
               </ace:column>              
